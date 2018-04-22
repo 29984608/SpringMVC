@@ -41,7 +41,5 @@
             </tr>
         </c:forEach></table>
 </form>
-
-
 </body>
 </html>
