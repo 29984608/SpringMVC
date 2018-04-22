@@ -46,7 +46,7 @@ public class ItemsController3  {
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("items",list);
-        modelAndView.setViewName("/index.jsp");
+        modelAndView.setViewName("index");
         return modelAndView;
     }
 }
