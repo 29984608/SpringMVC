@@ -1,7 +1,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/tool"
+       xmlns:mac="http://www.springframework.org/schema/cache"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/tool
+        http://www.springframework.org/schema/tool/spring-tool.xsd
+        http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 配置Handler -->
     <bean id="itemsController" name="/queryItems1.action" class="controller.ItemsController"/>
@@ -20,6 +27,19 @@
                 </props>
             </property>
     </bean>
+
+
+    <!--注解映射器-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+    <!--注解适配器-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
+    <!--对于单个注解的Handler可以单个配置，实际开发过程中使用扫描
+    <bean class="controller.ItemsController3"/>-->
+    <context:component-scan base-package="controller"></context:component-scan>
+
+    <!--实际开发使用<mac:annotation-driven>，代替映射器和适配器的配置-->
+
+    <!--<mac:annotation-driven></mac:annotation-driven>-->
 
     <!-- 处理器适配器 所有处理器适配器都实现了HandlerAdapter接口 -->
     <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
